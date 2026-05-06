@@ -51,6 +51,24 @@ cargo build --release
 cargo test
 ```
 
+## Nix Package
+
+This repository includes a Nix flake package.
+
+```bash
+# build
+nix build
+
+# run
+nix run
+```
+
+You can also install the binary into your profile:
+
+```bash
+nix profile install github:0Tick/surrealql-language-server
+```
+
 ## Repository Layout
 
 ```text
@@ -77,6 +95,36 @@ cargo test
 ## Editor Integration
 
 The server communicates over `stdio` and works with any LSP-compatible editor.
+
+### Neovim
+
+With `nvim-lspconfig`:
+
+```lua
+require('lspconfig').surrealql = {
+  default_config = {
+    cmd = { "surrealql-language-server" },
+    filetypes = { "surql", "surrealql" },
+    root_dir = require('lspconfig.util').root_pattern(".git"),
+  },
+}
+
+require('lspconfig').surrealql.setup({})
+```
+
+If you do not install globally and want to run directly from Nix:
+
+```lua
+require('lspconfig').surrealql = {
+  default_config = {
+    cmd = { "nix", "run", "github:0Tick/surrealql-language-server", "--" },
+    filetypes = { "surql", "surrealql" },
+    root_dir = require('lspconfig.util').root_pattern(".git"),
+  },
+}
+
+require('lspconfig').surrealql.setup({})
+```
 
 ## Grammar Development
 
