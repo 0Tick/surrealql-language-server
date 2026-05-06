@@ -65,11 +65,11 @@ nix run
 
 You can also install the binary into your profile:
 
+Replace `<owner>` with your repository owner (`0Tick` for this repository).
+
 ```bash
 nix profile install github:<owner>/surrealql-language-server
 ```
-
-For this repository, `<owner>` is `0Tick`.
 
 ## Repository Layout
 
@@ -122,6 +122,8 @@ lspconfig.surrealql.setup({})
 
 If you do not install globally and want to run directly from Nix:
 
+Replace `<owner>` with your repository owner (`0Tick` for this repository).
+
 ```lua
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
@@ -139,8 +141,6 @@ end
 
 lspconfig.surrealql.setup({})
 ```
-
-For this repository, `<owner>` is `0Tick`.
 
 ## Grammar Development
 
