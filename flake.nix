@@ -31,11 +31,6 @@
           src = self;
           cargoLock.lockFile = ./Cargo.lock;
 
-          nativeBuildInputs = [
-            pkgs.pkg-config
-            pkgs.clang
-          ];
-
           TREE_SITTER_SURREALQL_DIR = surrealql-tree-sitter;
         };
 

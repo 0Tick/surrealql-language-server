@@ -66,10 +66,10 @@ nix run
 You can also install the binary into your profile:
 
 ```bash
-nix profile install github:0Tick/surrealql-language-server
+nix profile install github:<owner>/surrealql-language-server
 ```
 
-If you are using a fork, replace `0Tick` with your repository owner.
+For this repository, `<owner>` is `0Tick`.
 
 ## Repository Layout
 
@@ -129,7 +129,7 @@ local configs = require('lspconfig.configs')
 if not configs.surrealql then
   configs.surrealql = {
     default_config = {
-      cmd = { 'nix', 'run', 'github:0Tick/surrealql-language-server', '--' },
+      cmd = { 'nix', 'run', 'github:<owner>/surrealql-language-server', '--' },
       filetypes = { 'surql', 'surrealql' },
       root_dir = lspconfig.util.root_pattern('.git'),
       single_file_support = true,
@@ -140,7 +140,7 @@ end
 lspconfig.surrealql.setup({})
 ```
 
-If you are using a fork, replace `0Tick` in the `nix run` source.
+For this repository, `<owner>` is `0Tick`.
 
 ## Grammar Development
 
