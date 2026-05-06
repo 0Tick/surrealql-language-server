@@ -101,29 +101,41 @@ The server communicates over `stdio` and works with any LSP-compatible editor.
 With `nvim-lspconfig`:
 
 ```lua
-require('lspconfig').surrealql = {
-  default_config = {
-    cmd = { "surrealql-language-server" },
-    filetypes = { "surql", "surrealql" },
-    root_dir = require('lspconfig.util').root_pattern(".git"),
-  },
-}
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
 
-require('lspconfig').surrealql.setup({})
+if not configs.surrealql then
+  configs.surrealql = {
+    default_config = {
+      cmd = { 'surrealql-language-server' },
+      filetypes = { 'surql', 'surrealql' },
+      root_dir = lspconfig.util.root_pattern('.git'),
+      single_file_support = true,
+    },
+  }
+end
+
+lspconfig.surrealql.setup({})
 ```
 
 If you do not install globally and want to run directly from Nix:
 
 ```lua
-require('lspconfig').surrealql = {
-  default_config = {
-    cmd = { "nix", "run", "github:0Tick/surrealql-language-server", "--" },
-    filetypes = { "surql", "surrealql" },
-    root_dir = require('lspconfig.util').root_pattern(".git"),
-  },
-}
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
 
-require('lspconfig').surrealql.setup({})
+if not configs.surrealql then
+  configs.surrealql = {
+    default_config = {
+      cmd = { 'nix', 'run', 'github:0Tick/surrealql-language-server', '--' },
+      filetypes = { 'surql', 'surrealql' },
+      root_dir = lspconfig.util.root_pattern('.git'),
+      single_file_support = true,
+    },
+  }
+end
+
+lspconfig.surrealql.setup({})
 ```
 
 ## Grammar Development
