@@ -69,6 +69,8 @@ You can also install the binary into your profile:
 nix profile install github:0Tick/surrealql-language-server
 ```
 
+If you are using a fork, replace `0Tick` with your repository owner.
+
 ## Repository Layout
 
 ```text
@@ -137,6 +139,8 @@ end
 
 lspconfig.surrealql.setup({})
 ```
+
+If you are using a fork, replace `0Tick` in the `nix run` source.
 
 ## Grammar Development
 
